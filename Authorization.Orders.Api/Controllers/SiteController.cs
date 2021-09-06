@@ -15,7 +15,7 @@ namespace Authorization.Orders.Api.Controllers
             return View();
         }
 
-      //  [Authorize]
+        [Authorize]
         [Route("[action]")]
         public string Secret()
         {

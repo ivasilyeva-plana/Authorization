@@ -1,19 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 
-namespace Authorization.Orders.Api
+namespace Authorization.IdentityServer
 {
     public class Startup
     {
@@ -24,15 +15,15 @@ namespace Authorization.Orders.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, config =>
-                {
-                    config.Authority = "https://localhost:10001";
-                    config.Audience = "OrdersAPI";
-                });
+            services.AddIdentityServer()
+                .AddInMemoryClients(IdentityServerConfiguration.GetClients())
+                .AddInMemoryApiResources(IdentityServerConfiguration.GetApiResources())
+                .AddInMemoryIdentityResources(IdentityServerConfiguration.GetIdentityResources())
+                .AddInMemoryApiScopes(IdentityServerConfiguration.GetApiScopes())
+                .AddDeveloperSigningCredential();
+
             services.AddControllersWithViews();
         }
 
@@ -43,12 +34,11 @@ namespace Authorization.Orders.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseIdentityServer();
 
             app.UseEndpoints(endpoints =>
             {

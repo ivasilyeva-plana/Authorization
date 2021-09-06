@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IdentityModel.Client;
 
 namespace Authorization.Users.Api.Controllers
 {
@@ -23,9 +24,21 @@ namespace Authorization.Users.Api.Controllers
         [Route("[action]")]
         public async Task<IActionResult> GetOrders()
         {
+            // retrieve to IdentityServer
+            var authClient = _httpClientFactory.CreateClient();
+            var discoveryDocument = await authClient.GetDiscoveryDocumentAsync("https://localhost:10001");
+            var tokenResponse = await authClient.RequestClientCredentialsTokenAsync(
+                new ClientCredentialsTokenRequest
+                {
+                    Address = discoveryDocument.TokenEndpoint,
+                    ClientId = "client_id",
+                    ClientSecret = "client_secret",
+                    Scope = "OrdersAPI"
+                });
+
             var ordersClient = _httpClientFactory.CreateClient();
 
-            //ordersClient.SetBearerToken(tokenResponse.AccessToken);
+            ordersClient.SetBearerToken(tokenResponse.AccessToken);
 
             var response = await ordersClient.GetAsync("https://localhost:5001/site/secret");
 
