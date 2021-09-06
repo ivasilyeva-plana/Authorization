@@ -5,7 +5,13 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Basics", "Authorization.Basics\Authorization.Basics.csproj", "{C58B2754-D97F-4D27-A955-674E69F67017}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Roles", "Authorization.Roles\Authorization.Roles.csproj", "{B81FA1E3-6928-4B94-90E4-6A3B1CEA1AE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Roles", "Authorization.Roles\Authorization.Roles.csproj", "{B81FA1E3-6928-4B94-90E4-6A3B1CEA1AE5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basics", "Basics", "{D0F29E55-3B65-4F46-9E7E-7492B61E99D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Orders.Api", "Authorization.Orders.Api\Authorization.Orders.Api.csproj", "{19AC7D93-E925-4BBC-A5AA-41BA5C3DA4B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Users.Api", "Authorization.Users.Api\Authorization.Users.Api.csproj", "{CFC62BC3-1771-4418-9E46-0D143F8DB76A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +27,21 @@ Global
 		{B81FA1E3-6928-4B94-90E4-6A3B1CEA1AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B81FA1E3-6928-4B94-90E4-6A3B1CEA1AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B81FA1E3-6928-4B94-90E4-6A3B1CEA1AE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19AC7D93-E925-4BBC-A5AA-41BA5C3DA4B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19AC7D93-E925-4BBC-A5AA-41BA5C3DA4B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19AC7D93-E925-4BBC-A5AA-41BA5C3DA4B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19AC7D93-E925-4BBC-A5AA-41BA5C3DA4B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFC62BC3-1771-4418-9E46-0D143F8DB76A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFC62BC3-1771-4418-9E46-0D143F8DB76A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFC62BC3-1771-4418-9E46-0D143F8DB76A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFC62BC3-1771-4418-9E46-0D143F8DB76A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C58B2754-D97F-4D27-A955-674E69F67017} = {D0F29E55-3B65-4F46-9E7E-7492B61E99D0}
+		{B81FA1E3-6928-4B94-90E4-6A3B1CEA1AE5} = {D0F29E55-3B65-4F46-9E7E-7492B61E99D0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E40E6DE9-B626-4E55-BFC9-A930693EC02E}
