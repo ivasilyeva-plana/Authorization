@@ -16,13 +16,15 @@ namespace Authorization.Basics
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
             services.AddAuthentication("Cookie")
                 .AddCookie("Cookie", config =>
                 {
                     config.LoginPath = "/Admin/Login";
                 });
+
             services.AddAuthorization();
+
+            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -34,12 +36,14 @@ namespace Authorization.Basics
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+
             });
         }
     }
