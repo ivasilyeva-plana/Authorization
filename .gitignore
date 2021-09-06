@@ -1,0 +1,12 @@
+﻿# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+**/.idea/**
+
+# Build results
+[Bb]in/
+[Oo]bj/
+**/.vs/**
+**/deploy.out
