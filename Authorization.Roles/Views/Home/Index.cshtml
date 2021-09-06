@@ -1,0 +1,9 @@
+﻿<h1>Home</h1>
+<a asp-controller="Admin" asp-action="Index">Admin</a>
+<p>
+    IsAuthenticated : @User.Identity.IsAuthenticated
+</p>
+
+<p>
+    Name : @User.Identity.Name
+</p>
