@@ -36,7 +36,7 @@ namespace Authorization.IdentityServer
 
             services.AddIdentityServer(options =>
                 {
-                    options.UserInteraction.LoginUrl = "https://localhost:2001/Auth/Login";
+                    options.UserInteraction.LoginUrl = "/Auth/Login";
                 })
                 .AddAspNetIdentity<IdentityUser>()
                 .AddInMemoryClients(IdentityServerConfiguration.GetClients())
